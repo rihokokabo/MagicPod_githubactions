@@ -1,11 +1,7 @@
-name: GitHub Actions Demo
-on: workflow_dispatch
+name: learn-github-actions
+on: [push]
 jobs:
-  dispatch:
-    name: Workflow dispatch events
+  check-bats-version:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Hello
-      run: |
-        echo "hello"
+      - run: echo "this is pen"
