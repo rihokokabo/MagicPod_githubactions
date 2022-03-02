@@ -5,3 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "this is pen"
+      - run: curl -sS -o /dev/stderr -w %{http_code} -X POST https://magic-pod.com/api/v1.0/TRIDENTtest/ContactApp/cross-batch-run/ -H "Authorization: Token b3fe292fa6d12d413179a96a50207bb64039ec36" -d "{\"test_settings_number\":1}"
