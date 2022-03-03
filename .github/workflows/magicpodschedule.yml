@@ -1,7 +1,11 @@
-name: learn-github-actions
+name: mugicpod-on-github-actions
 on: workflow_dispatch
 jobs:
-  check-bats-version:
+  execute-magicpod-test:
     runs-on: ubuntu-latest
     steps:
-      - run: 'curl -sS -o /dev/stderr -w %{http_code} -X POST https://magic-pod.com/api/v1.0/TRIDENTtest/Browserdemo/cross-batch-run/ -H "Authorization: Token b3fe292fa6d12d413179a96a50207bb64039ec36" -d "{\"test_settings_number\":1}"'
+    - run: |
+        curl -L -O https://github.com/Magic-Pod/magicpod-api-client/releases/download/0.95.0.1/linux64_magicpod-api-client.zip
+        curl unzip -q linux64_magicpod-api-client.zip
+        SECRET_API_TOKEN="b3fe292fa6d12d413179a96a50207bb64039ec36"
+        ./magicpod-api-client batch-run -t ${SECRET_API_TOKEN} -o TRIDENTtest -p Browserdemo -S 1
